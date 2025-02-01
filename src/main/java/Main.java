@@ -1,64 +1,57 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
 public class Main {
+
     public static void main(String[] args) {
         PalindromeChecker checker = new PalindromeChecker();
-        checker.tester();
+        checker.tester();  // Call tester method
     }
 }
 
 // PalindromeChecker class
 class PalindromeChecker {
 
+    // Method to test palindrome functionality with an input file
     public void tester() {
         try {
-            File file = new File("palindromes.txt"); // Load file
-            Scanner scanner = new Scanner(file);
-            
-            int lineCount = 0;
-            while (scanner.hasNextLine()) {
-                scanner.nextLine();
-                lineCount++;
-            }
-            scanner.close();
+            // Here, you would load the file containing the phrases to test
+            String[] lines = {
+                "test", 
+                "rotator", 
+                "rewriter", 
+                "nurses run", 
+                "Madam, I'm Adam!", 
+                "A Man! A Plan! A Canal! Panama!"
+            };
 
-            System.out.println("there are " + lineCount + " lines");
+            System.out.println("there are " + lines.length + " lines");
 
-            scanner = new Scanner(file); // Reopen file for reading
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
+            // Loop through each line and check if it's a palindrome
+            for (String line : lines) {
                 if (palindrome(line)) {
                     System.out.println(line + " IS a palindrome.");
                 } else {
                     System.out.println(line + " is NOT a palindrome.");
                 }
             }
-            scanner.close();
 
-        } catch (FileNotFoundException e) {
-            System.out.println("Error: palindromes.txt not found. Please ensure it is in the correct directory.");
+        } catch (Exception e) {
+            System.out.println("Error: Something went wrong with testing.");
         }
     }
 
-    // Checks if a given string is a palindrome
+    // Method to check if a word is a palindrome
     public boolean palindrome(String word) {
-        if (word == null || word.isEmpty()) return false; // Handle empty cases
+        if (word == null || word.isEmpty()) return false; // Handle empty or null cases
 
-        // Normalize: Convert to lowercase and remove non-letter characters
+        // Normalize: Convert to lowercase and remove all non-alphabet characters
         word = word.toLowerCase().replaceAll("[^a-z]", "");
 
-        // Compare the cleaned-up version with its reversed version
+        // Check if the normalized word is equal to its reverse
         return word.equals(reverse(word));
     }
 
-    // Reverses a string
+    // Method to reverse a string
     public String reverse(String str) {
-        String reversed = "";
-        for (int i = str.length() - 1; i >= 0; i--) {
-            reversed += str.charAt(i);
-        }
-        return reversed;
+        StringBuilder reversed = new StringBuilder(str);
+        return reversed.reverse().toString();
     }
 }
