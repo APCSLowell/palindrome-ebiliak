@@ -1,4 +1,17 @@
-public class PalindromeChecker {
+public class Main {
+
+    public static void main(final String[] args) {
+        PalindromeChecker checker = new PalindromeChecker();
+
+        // Sample test cases (for debugging)
+        System.out.println(checker.isPalindrome("rotator")); // Expected: true
+        System.out.println(checker.isPalindrome("test"));    // Expected: false
+        System.out.println(checker.isPalindrome("A man, a plan, a canal, Panama!")); // Expected: true
+    }
+}
+
+// PalindromeChecker class
+class PalindromeChecker {
 
     // Checks if a given string is a palindrome
     public boolean isPalindrome(String word) {
@@ -13,7 +26,6 @@ public class PalindromeChecker {
 
     // Reverses a string
     public String reverse(String str) {
-        StringBuilder reversed = new StringBuilder(str);
-        return reversed.reverse().toString();
+        return new StringBuilder(str).reverse().toString();
     }
 }
