@@ -1,11 +1,11 @@
-import java.io.File;  // Import the File class
-import java.io.FileNotFoundException;  // Import this class to handle errors
-import java.util.Scanner; // Import the Scanner class to read text files
+import java.io.File;  
+import java.io.FileNotFoundException;  
+import java.util.Scanner; 
 
 public class PalindromeChecker {
 
     public void tester() {
-        // Create a list to store the lines from the file dynamically
+     
         String[] lines = new String[6]; 
         try {
             File myFile = new File("palindromes.txt");
@@ -33,23 +33,23 @@ public class PalindromeChecker {
         }
     }
 
-    // Method to check if the word is a palindrome
+
     public boolean palindrome(String word) {
-        // Normalize the string: convert to lowercase and remove non-letter characters
+       
         word = word.toLowerCase().replaceAll("[^a-z]", "");
 
-        // Compare the normalized word with its reverse
+      
         return word.equals(reverse(word));
     }
 
-    // Method to reverse the string
+
     public String reverse(String str) {
         StringBuilder sNew = new StringBuilder(str);
         return sNew.reverse().toString();
     }
 
     public static void main(String[] args) {
-        // Create an instance of PalindromeChecker and call tester() method
+
         PalindromeChecker checker = new PalindromeChecker();
         checker.tester();
     }
