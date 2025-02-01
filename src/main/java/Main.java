@@ -2,17 +2,15 @@ public class Main {
 
     public static void main(String[] args) {
         PalindromeChecker checker = new PalindromeChecker();
-        checker.tester();  // Call tester method
+        checker.tester();  // Call the tester method to test palindromes
     }
 }
 
-// PalindromeChecker class
 class PalindromeChecker {
 
-    // Method to test palindrome functionality with an input file
+    // Method to test palindrome functionality with hardcoded data (you can replace with file reading logic)
     public void tester() {
         try {
-            // Here, you would load the file containing the phrases to test
             String[] lines = {
                 "test", 
                 "rotator", 
